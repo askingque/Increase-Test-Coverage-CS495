@@ -30,4 +30,36 @@ public class AtmTests
 
     }
 
+    [Fact]
+
+    public void Test_Deposit()
+    {
+        var result = testAtm.deposit(25);
+
+        Assert.True(result);
+
+        Assert.Equal(125, testAtm.getBalance());
+    }
+
+    [Fact]
+
+    public void Test_DepositNegative()
+    {
+        var result = testAtm.deposit(-25);
+
+        Assert.False(result);
+
+        Assert.Equal(100, testAtm.getBalance());
+    }
+
+    [Fact]
+
+    public void Test_WithrawLarge()
+    {
+        var result = testAtm.withdraw(150);
+
+        Assert.False(result);
+
+        Assert.Equal(100, testAtm.getBalance());
+    }
 }
